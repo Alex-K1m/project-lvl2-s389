@@ -4,3 +4,17 @@
 # gendiff
 
 A simple CLI utility that helps to find diff between config files.
+
+Installation:
+
+```
+npm install -g gendiff-s389
+```
+
+To view help section add `-h` or `--help` option:
+
+```
+gendiff -h
+```
+
+[![asciicast](https://asciinema.org/a/lnGPyQ0EFN5Hb1uy4kJWBKt3Q.svg)](https://asciinema.org/a/lnGPyQ0EFN5Hb1uy4kJWBKt3Q)
