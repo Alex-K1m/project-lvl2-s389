@@ -1,0 +1,8 @@
+language: node_js
+
+# node version - latest stable
+node_js:
+  - node
+
+script:
+  - make lint
