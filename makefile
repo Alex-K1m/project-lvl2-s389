@@ -13,4 +13,10 @@ publish:
 lint:
 	npx eslint .
 
+link:
+	npm run build
+	cd dist/
+	npm link
+	cd ../
+
 .PHONY: test

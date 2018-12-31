@@ -21,6 +21,10 @@
     "hexlet"
   ],
   "author": "Alex Kim",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Alex-K1m/project-lvl2-s389.git"
+  },
   "license": "ISC",
   "devDependencies": {
     "@babel/cli": "^7.2.3",
@@ -32,5 +36,8 @@
     "eslint": "^5.11.1",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.14.0"
+  },
+  "dependencies": {
+    "commander": "^2.19.0"
   }
 }
