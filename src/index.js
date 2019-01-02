@@ -1,11 +1,8 @@
-import path from 'path';
 import fs from 'fs';
 import _ from 'lodash';
 
-const getData = (pathArg) => {
-  const normalizedPath = path.isAbsolute(pathArg)
-    ? pathArg : path.join(__dirname, pathArg);
-  const file = fs.readFileSync(normalizedPath);
+const getData = (path) => {
+  const file = fs.readFileSync(path);
   return JSON.parse(file);
 };
 
