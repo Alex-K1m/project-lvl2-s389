@@ -1,0 +1,14 @@
+{
+  "boolean": false,
+  "int": 5,
+  "foo": "bar",
+  "new prop1": "new prop value",
+  "new prop2": "new prop",
+  "tests": "jest",
+  "string": "some string",
+  "one": null,
+  "Project": 2,
+  "Anwan Glover": "Treme",
+  "Clarke Peters": null,
+  "FileType": "json"
+}
