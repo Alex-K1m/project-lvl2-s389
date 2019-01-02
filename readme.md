@@ -17,4 +17,12 @@ To view help section add `-h` or `--help` option:
 gendiff -h
 ```
 
-[![asciicast](https://asciinema.org/a/lnGPyQ0EFN5Hb1uy4kJWBKt3Q.svg)](https://asciinema.org/a/lnGPyQ0EFN5Hb1uy4kJWBKt3Q)
+Usage
+
+```
+gendiff before.json after.json
+```
+
+You can use both absolute and relative paths.
+
+[![asciicast](https://asciinema.org/a/sPrZhwpClZGMLyuu0LlDK4PtN.svg)](https://asciinema.org/a/sPrZhwpClZGMLyuu0LlDK4PtN)
