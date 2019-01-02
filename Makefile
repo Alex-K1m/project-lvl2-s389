@@ -5,6 +5,7 @@ start:
 	npx babel-node -- src/bin/gendiff.js
 
 build:
+	rm -rf dist
 	npm run build
 
 publish:
@@ -18,5 +19,8 @@ link:
 	cd dist/
 	npm link
 	cd ../
+
+test:
+	npm test
 
 .PHONY: test

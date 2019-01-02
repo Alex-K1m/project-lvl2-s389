@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 import program from 'commander';
 import { version, description } from '../../package.json';
+import gendiff from '..';
 
 program
   .version(version)
@@ -8,3 +9,5 @@ program
   .option('-f, --format [type]', 'output format')
   .arguments('<firstConfig> <secondConfig>')
   .parse(process.argv);
+
+gendiff();
