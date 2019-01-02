@@ -1,7 +1,13 @@
+import path from 'path';
 import fs from 'fs';
 import _ from 'lodash';
 
-const getData = path => JSON.parse(fs.readFileSync(path));
+const getData = (pathArg) => {
+  const normalizedPath = path.isAbsolute(pathArg)
+    ? pathArg : path.join(__dirname, pathArg);
+  const file = fs.readFileSync(normalizedPath);
+  return JSON.parse(file);
+};
 
 const addLine = (str, key, value, mark = ' ') => `${str}\n  ${mark} ${key}: ${value}`;
 
