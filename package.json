@@ -1,6 +1,6 @@
 {
   "name": "gendiff-s389",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Find differences between configuration files.",
   "bin": {
     "gendiff": "dist/bin/gendiff.js"
