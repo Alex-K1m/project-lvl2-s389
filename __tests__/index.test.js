@@ -3,29 +3,15 @@ import path from 'path';
 import gendiff from '../src';
 
 const fixtures = '__tests__/__fixtures__/';
+const args = [
+  ['before.json', 'after.json', 'expectedJson.txt'],
+  ['before.yaml', 'after.yml', 'expectedYaml.txt'],
+  ['before.ini', 'after.ini', 'expectedIni.txt'],
+];
 
-describe('gendiff', () => {
-  it('diff output json', () => {
-    const pathToConfig1 = path.join(fixtures, 'before.json');
-    const pathToConfig2 = path.join(fixtures, 'after.json');
-    const expected = fs.readFileSync(path.join(fixtures, 'expectedJson.txt'))
-      .toString();
-    expect(gendiff(pathToConfig1, pathToConfig2)).toBe(expected);
-  });
+const table = args.map(set => set.map(file => path.join(fixtures, file)));
 
-  it('diff output yaml', () => {
-    const pathToConfig1 = path.join(fixtures, 'before.yaml');
-    const pathToConfig2 = path.join(fixtures, 'after.yml');
-    const expected = fs.readFileSync(path.join(fixtures, 'expectedYaml.txt'))
-      .toString();
-    expect(gendiff(pathToConfig1, pathToConfig2)).toBe(expected);
-  });
-
-  it('diff output ini', () => {
-    const pathToConfig1 = path.join(fixtures, 'before.ini');
-    const pathToConfig2 = path.join(fixtures, 'after.ini');
-    const expected = fs.readFileSync(path.join(fixtures, 'expectedIni.txt'))
-      .toString();
-    expect(gendiff(pathToConfig1, pathToConfig2)).toBe(expected);
-  });
+test.each(table)('output diff %#', (pathToConfig1, pathToConfig2, pathToExpected) => {
+  expect(gendiff(pathToConfig1, pathToConfig2))
+    .toBe(fs.readFileSync(pathToExpected).toString());
 });
