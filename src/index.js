@@ -11,7 +11,7 @@ const buildLine = (str, key, value, mark = ' ') => `${str}\n  ${mark} ${key}: ${
 const gendiff = (path1, path2) => {
   const file1 = getData(path1);
   const file2 = getData(path2);
-  const keys = [...new Set([...Object.keys(file1), ...Object.keys(file2)])];
+  const keys = _.union(_.keys(file1), _.keys(file2));
 
   const str = keys.reduce((acc, key) => {
     if (file1[key] === file2[key]) {
