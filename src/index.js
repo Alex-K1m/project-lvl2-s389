@@ -1,9 +1,12 @@
 import fs from 'fs';
 import _ from 'lodash';
+import path from 'path';
+import parse from './parsers';
 
-const getData = (path) => {
-  const file = fs.readFileSync(path);
-  return JSON.parse(file);
+const getData = (pathToFile) => {
+  const file = fs.readFileSync(pathToFile);
+  const extension = path.extname(pathToFile);
+  return parse(extension, file);
 };
 
 const buildLine = (str, key, value, mark = ' ') => `${str}\n  ${mark} ${key}: ${value}`;
