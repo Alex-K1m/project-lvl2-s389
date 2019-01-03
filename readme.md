@@ -3,7 +3,7 @@
 
 # gendiff
 
-A simple CLI utility that helps to find diff between config files.
+A simple CLI utility that helps to find diff between config files. Works with JSON and YAML formats.
 
 Installation:
 
@@ -20,9 +20,9 @@ gendiff -h
 Usage
 
 ```
-gendiff before.json after.json
+gendiff before.json after.yml
 ```
 
 You can use both absolute and relative paths.
 
-[![asciicast](https://asciinema.org/a/sPrZhwpClZGMLyuu0LlDK4PtN.svg)](https://asciinema.org/a/sPrZhwpClZGMLyuu0LlDK4PtN)
+[![asciicast](https://asciinema.org/a/TCnt9jb7tDMx7nHzkMNsGkNmh.svg)](https://asciinema.org/a/TCnt9jb7tDMx7nHzkMNsGkNmh)
