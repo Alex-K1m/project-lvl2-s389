@@ -1,4 +1,5 @@
 import yaml from 'js-yaml';
+import ini from 'ini';
 
 const parsers = new Map();
 
@@ -15,3 +16,6 @@ defineParser('.json', parseJson);
 const parseYaml = fileContent => yaml.safeLoad(fileContent);
 defineParser('.yaml', parseYaml);
 defineParser('.yml', parseYaml);
+
+const parseIni = fileContent => ini.parse(fileContent.toString());
+defineParser('.ini', parseIni);
