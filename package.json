@@ -1,6 +1,6 @@
 {
   "name": "gendiff-s389",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "Find differences between configuration files.",
   "bin": {
     "gendiff": "dist/bin/gendiff.js"
@@ -44,6 +44,7 @@
   },
   "dependencies": {
     "commander": "^2.19.0",
+    "js-yaml": "^3.12.0",
     "lodash": "^4.17.11"
   }
 }

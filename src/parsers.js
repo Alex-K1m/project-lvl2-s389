@@ -1,3 +1,5 @@
+import yaml from 'js-yaml';
+
 const parsers = new Map();
 
 const defineParser = (extension, fn) => parsers.set(extension, fn);
@@ -10,6 +12,6 @@ export default parse;
 const parseJson = fileContent => JSON.parse(fileContent);
 defineParser('.json', parseJson);
 
-const parseYaml = fileContent => console.log('hit parseYaml');
+const parseYaml = fileContent => yaml.safeLoad(fileContent);
 defineParser('.yaml', parseYaml);
 defineParser('.yml', parseYaml);
