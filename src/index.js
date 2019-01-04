@@ -11,6 +11,12 @@ const getData = (pathToFile) => {
 
 const buildLine = (str, key, value, mark = ' ') => `${str}\n  ${mark} ${key}: ${value}`;
 
+// {
+//   status: not changed | added | changed | removed,
+//   key: ___,
+//   value: ___ | []
+// }
+
 const gendiff = (path1, path2) => {
   const file1 = getData(path1);
   const file2 = getData(path2);

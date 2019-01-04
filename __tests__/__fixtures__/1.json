@@ -1,0 +1,32 @@
+{
+  "accessKey": "",
+  "attributes": {
+    "length": 0,
+    "background": "",
+    "baseURI": "https://ru.hexlet.io/",
+    "bgColor": "",
+    "childElementCount": 21
+  },
+  "background": "",
+  "contentEditable": "inherit",
+  "firstChild": {
+    "assignedSlot": null,
+    "attributeStyleMap": {
+      "size": 1
+    },
+    "attributes": {
+      "0": "role",
+      "1": {
+        "childNodes": {
+          "length": 4
+        },
+        "nodeType": 2,
+        "nodeValue": "polite",
+        "prefix": null
+      },
+      "2": "aria-label"
+    },
+    "spellcheck": true,
+    "tabIndex": -1
+  }
+}
