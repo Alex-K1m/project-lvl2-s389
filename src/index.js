@@ -2,6 +2,7 @@ import fs from 'fs';
 import _ from 'lodash';
 import path from 'path';
 import parse from './parsers';
+import render from './renderers';
 
 const getData = (pathToFile) => {
   const file = fs.readFileSync(pathToFile);
@@ -49,7 +50,7 @@ const genAst = (obj1, obj2) => {
 const gendiff = (path1, path2) => {
   const data1 = getData(path1);
   const data2 = getData(path2);
-  console.log(genAst(data1, data2));
+  return render(genAst(data1, data2));
 };
 
 export default gendiff;
