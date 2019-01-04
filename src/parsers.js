@@ -1,8 +1,8 @@
 import yaml from 'js-yaml';
 
-const parseJson = data => JSON.parse(data);
+const parseJson = JSON.parse;
 
-const parseYaml = data => yaml.safeLoad(data);
+const parseYaml = yaml.safeLoad;
 
 const parsers = {
   '.json': parseJson,
