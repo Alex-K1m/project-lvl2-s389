@@ -1,17 +1,21 @@
 import _ from 'lodash';
 
-const stringify = (item, indent) => {
+const getIndent = level => '    '.repeat(level);
+
+const stringify = (item, currentLevel) => {
   if (!_.isObject(item)) return item;
+  const indent = getIndent(currentLevel);
+  const newLevel = currentLevel + 1;
 
   const result = _.keys(item).reduce((acc, key) => {
     const value = item[key];
     if (_.isObject(value)) {
-      return stringify(value, `${indent}    `);
+      return `${acc}\n  ${indent}  ${key}: ${stringify(value, newLevel)}`;
     }
-    return `${acc}\n${indent}      ${key}: ${value}`;
+    return `${acc}\n  ${indent}  ${key}: ${value}`;
   }, '');
 
-  return `{${result}\n${indent}  }`;
+  return `{${result}\n${indent}}`;
 };
 
 const makeMark = (status) => {
@@ -20,10 +24,9 @@ const makeMark = (status) => {
   return '-';
 };
 
-const render = (ast, level = 0) => {
-  const indentStep = '    '.repeat(level);
-  const indent = `  ${indentStep}`;
-  const newLevel = level + 1;
+const render = (ast, currentLevel = 0) => {
+  const indent = getIndent(currentLevel);
+  const newLevel = currentLevel + 1;
 
   const transform = ((node) => {
     const {
@@ -31,15 +34,15 @@ const render = (ast, level = 0) => {
     } = node;
     const mark = makeMark(status);
     if (type === 'element') {
-      return `${indent}${mark} ${key}: ${stringify(value, indent)}`;
+      return `  ${indent}${mark} ${key}: ${stringify(value, newLevel)}`;
     }
-    return `${indent}  ${key}: ${render(children, newLevel)}`;
+    return `  ${indent}  ${key}: ${render(children, newLevel)}`;
   });
 
   const result = ast
     .map(transform)
     .join('\n');
-  return `{\n${result}\n${indentStep}}`;
+  return `{\n${result}\n${indent}}`;
 };
 
 export default render;
