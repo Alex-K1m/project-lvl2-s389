@@ -4,12 +4,12 @@ import gendiff from '../src';
 
 const fixtures = '__tests__/__fixtures__/';
 const args = [
-  ['1.json', '2.yml', 'json-yaml.txt'],
-  ['2.yml', '3.ini', 'yaml-ini.txt'],
-  ['3.ini', '1.json', 'ini-json.txt'],
+  ['set1.json', 'set2.yml', 'json-yaml.txt'],
+  ['set2.yml', 'set3.ini', 'yaml-ini.txt'],
+  ['set3.ini', 'set1.json', 'ini-json.txt'],
 ];
 
-const table = args.map(set => set.map(file => path.join(fixtures, file)));
+const table = args.map(set => set.map(filename => path.join(fixtures, filename)));
 
 test.each(table)('diff %#', (pathToConfig1, pathToConfig2, pathToExpected) => {
   expect(gendiff(pathToConfig1, pathToConfig2))

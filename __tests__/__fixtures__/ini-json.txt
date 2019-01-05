@@ -1,1 +1,28 @@
-not set yet
+{
+    common: {
+        setting1: Value 1
+        setting2: 200
+      - setting4: blah blah
+        setting6: {
+            key: value
+        }
+      + setting3: true
+    }
+    group1: {
+        foo: bar
+        baz: bas
+      - nest: str
+      + nest: {
+            key: value
+        }
+      - sub: {
+            description: empty
+            inner: {
+                num: 10
+            }
+        }
+    }
+    group2: {
+        abc: 12345
+    }
+}
