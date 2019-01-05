@@ -25,4 +25,4 @@ gendiff before.yaml after.ini
 
 You can use both absolute and relative paths.
 
-[![asciicast](https://asciinema.org/a/UeFHy5fkGiK7KRI3cZeAN4ksA.svg)](https://asciinema.org/a/UeFHy5fkGiK7KRI3cZeAN4ksA)
+[![asciicast](https://asciinema.org/a/5jN74CQsNs4rAgbCnBhPdi35q.svg)](https://asciinema.org/a/5jN74CQsNs4rAgbCnBhPdi35q)
