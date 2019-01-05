@@ -21,18 +21,18 @@ const makeElement = (status, key, value) => ({
   value,
 });
 
-const genAst = (obj1, obj2) => {
-  const keys = _.union(_.keys(obj1), _.keys(obj2));
+const genAst = (node1, node2) => {
+  const keys = _.union(_.keys(node1), _.keys(node2));
 
   return keys.reduce((acc, key) => {
-    const value1 = obj1[key];
-    const value2 = obj2[key];
+    const value1 = node1[key];
+    const value2 = node2[key];
 
     if (_.isObject(value1) && _.isObject(value2)) {
       return [...acc, { type: 'list', key, children: genAst(value1, value2) }];
     }
 
-    if (_.has(obj1, key) && _.has(obj2, key)) {
+    if (_.has(node1, key) && _.has(node2, key)) {
       if (value1 === value2) {
         return [...acc, makeElement('same', key, value1)];
       }
@@ -40,7 +40,7 @@ const genAst = (obj1, obj2) => {
         makeElement('removed', key, value1),
         makeElement('added', key, value2)];
     }
-    if (_.has(obj1, key)) {
+    if (_.has(node1, key)) {
       return [...acc, makeElement('removed', key, value1)];
     }
     return [...acc, makeElement('added', key, value2)];

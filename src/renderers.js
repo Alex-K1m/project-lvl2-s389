@@ -1,27 +1,29 @@
 import _ from 'lodash';
 
-const getIndent = level => '    '.repeat(level);
-
-const stringify = (item, currentLevel) => {
-  if (!_.isObject(item)) return item;
-  const indent = getIndent(currentLevel);
-  const newLevel = currentLevel + 1;
-
-  const result = _.keys(item).reduce((acc, key) => {
-    const value = item[key];
-    if (_.isObject(value)) {
-      return `${acc}\n  ${indent}  ${key}: ${stringify(value, newLevel)}`;
-    }
-    return `${acc}\n  ${indent}  ${key}: ${value}`;
-  }, '');
-
-  return `{${result}\n${indent}}`;
-};
+const getIndent = multiplier => '    '.repeat(multiplier);
 
 const makeMark = (status) => {
   if (status === 'same') return ' ';
   if (status === 'added') return '+';
   return '-';
+};
+
+const buildLine = (indent, key, value, mark = ' ') => `  ${indent}${mark} ${key}: ${value}`;
+
+const stringify = (node, currentLevel) => {
+  if (!_.isObject(node)) return node;
+  const indent = getIndent(currentLevel);
+  const newLevel = currentLevel + 1;
+
+  const result = _.keys(node).reduce((acc, key) => {
+    const value = node[key];
+    if (_.isObject(value)) {
+      return `${acc}\n${buildLine(indent, key, stringify(value, newLevel))}`;
+    }
+    return `${acc}\n${buildLine(indent, key, value)}`;
+  }, '');
+
+  return `{${result}\n${indent}}`;
 };
 
 const render = (ast, currentLevel = 0) => {
@@ -34,9 +36,9 @@ const render = (ast, currentLevel = 0) => {
     } = node;
     const mark = makeMark(status);
     if (type === 'element') {
-      return `  ${indent}${mark} ${key}: ${stringify(value, newLevel)}`;
+      return buildLine(indent, key, stringify(value, newLevel), mark);
     }
-    return `  ${indent}  ${key}: ${render(children, newLevel)}`;
+    return buildLine(indent, key, render(children, newLevel));
   });
 
   const result = ast
